@@ -59,7 +59,7 @@ func LoanApplicationWorkflow(ctx workflow.Context) error {
 	logger.Info("KYC verification succeeded, continuing the workflow")
 	//time.Sleep(20 * time.Second)
 	logger.Info("other processes completed")
-	print("Result : ", res)
+	print("Result : ", &res)
 
 	//c, err := client.Dial(client.Options{
 	//	HostPort: client.DefaultHostPort,
