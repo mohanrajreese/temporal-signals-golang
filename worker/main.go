@@ -34,7 +34,13 @@ func main() {
 	//ctx = workflow.WithActivityOptions(ctx, ao)
 
 	w.RegisterWorkflow(signalscheck.LoanApplicationWorkflow)
-	w.RegisterActivity(signalscheck.SubmitFormActivity)
+	w.RegisterActivity(signalscheck.GreetingActivity)
+	w.RegisterActivity(signalscheck.FillApplicationActivity)
+	w.RegisterActivity(signalscheck.SubmitApplicationActivity)
+	w.RegisterActivity(signalscheck.ApprovalApplicationActivity)
+	w.RegisterActivity(signalscheck.SanctionLoanActivity)
+	w.RegisterActivity(signalscheck.DisbursalActivity)
+	w.RegisterActivity(signalscheck.CompletionActivity)
 
 	err = w.Run(worker.InterruptCh())
 	if err != nil {
