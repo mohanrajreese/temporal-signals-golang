@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"go.temporal.io/sdk/client"
 	"signalscheck"
-
-	"time"
 )
 
 func main() {
@@ -31,15 +29,6 @@ func main() {
 		return
 	}
 
-	// Send a signal to the workflow after some time
-	time.Sleep(10 * time.Second)
-	err = c.SignalWorkflow(context.Background(), signalscheck.WorkflowID, "", signalscheck.KYCSignal, true)
-	if err != nil {
-		fmt.Println("Failed to signal workflow", err)
-		return
-	}
-
-	// Wait for the workflow to complete
 	var result string
 	err = we.Get(context.Background(), &result)
 	if err != nil {
